@@ -149,7 +149,7 @@ function printPattern6(rows){
  *********** 
 *************
 */
-function printPatter7(rows){
+function printPattern7(rows){
     let pattern = '';
     for(let row=0; row<rows; row++){
         let line = '';
@@ -178,7 +178,7 @@ function printPatter7(rows){
     *  
 */
 
-function printPatter8(rows){
+function printPattern8(rows){
     let pattern = '';
     for(let row=0; row<rows; row++){
         let line = '';
@@ -210,7 +210,7 @@ function printPatter8(rows){
    ***   
     * 
 */
-function printPatter9(rows){
+function printPattern9(rows){
     let pattern = '';
 
     for(let row=0; row<rows/2; row++){
@@ -254,7 +254,7 @@ function printPatter9(rows){
 **
 *
 */
-function printPatter10(rows){
+function printPattern10A(rows){
     let pattern = '';
     for(let row=0; row<Math.ceil(rows/2); row++){
         let line = '';
@@ -271,29 +271,113 @@ function printPatter10(rows){
         }
         pattern += line + '\n';
     }
-    console.log(`Print Pattern 10 & rows : ${rows}`)
+    console.log(`Print Pattern 10-A & rows : ${rows}`)
     console.log(pattern)
 }
 
+function printPattern10B(rows) {
+
+    let pattern = '';
+
+    for (let row = 0; row < 2 * rows - 1; row++) {
+
+        let line = '';
+
+        let stars = row < rows
+            ? row + 1
+            : 2 * rows - row - 1;
+
+        for (let col = 0; col < stars; col++) {
+            line += '*';
+        }
+
+        pattern += line + '\n';
+    }
+
+    console.log(`Print Pattern 10-B & rows : ${rows}`);
+    console.log(pattern);
+}
+
+
 /* 
 11. Pattern
-1 
-2 3 
-4 5 6 
-7 8 9 10 
-11 12 13 14 15 
+1
+01
+101
+0101
+10101
+010101
+1010101
 */
-function printPatter11(rows){
+function printPattern11A(rows){
     let pattern = '';
     for(let row=1; row<=rows; row++){
         let line = '';
         for(let col=1; col<=row; col++){
-            // line += `${col%2} `
-            // line = line + `${row}`
+            line += row%2 !== 0 ? col%2!==0 ? '1' : '0' : col%2!==0 ? '0' : '1'; 
+
+            // ---------- or ----------
+
+            // if(row%2!==0){
+            //     if(col%2!==0){
+            //         line += '1'
+            //     }else{
+            //         line += '0';
+            //     }
+            // }else{
+            //     if(col%2!==0){
+            //         line += '0';
+            //     }else{
+            //         line += '1';
+            //     }
+            // }
         }
         pattern += line + '\n';
     }
     console.log(`Print Pattern 11 & rows : ${rows}`)
+    console.log(pattern)
+}
+
+function printPattern11B(rows){
+    let pattern = '';
+    for(let row=1; row<=rows; row++){
+        let line = '';
+        let start = 1;
+        if(row%2==0) start = 0;
+        for(let col=1; col<=row; col++){
+            line += start;
+            start = 1-start;
+        }
+        pattern += line + '\n';
+    }
+    console.log(`Print Pattern 11 & rows : ${rows}`)
+    console.log(pattern)
+}
+
+/* 
+12. Pattern
+1        1
+12      21
+123    321
+1234  4321
+1234554321
+*/
+function printPattern12(rows){
+    let pattern = '';
+    for(let row=1; row<=rows; row++){
+        let line = '';
+        for(let col=1; col<=row; col++){
+            line += `${col}`;
+        }
+        for(let col=1; col<=(2*(rows-row)); col++){
+            line += ' ';
+        }
+        for(let col=row; col>0; col--){
+            line += `${col}`;
+        }
+        pattern += line + '\n';
+    }
+    console.log(`Print Pattern 12 & rows : ${rows}`)
     console.log(pattern)
 }
 
@@ -305,7 +389,7 @@ function printPatter11(rows){
 7 8 9 10 
 11 12 13 14 15 
 */
-function printPatter13(rows){
+function printPattern13(rows){
     let pattern = '';
     let num = 1;
     for(let row=0; row<rows; row++){
@@ -316,12 +400,100 @@ function printPatter13(rows){
         }
         pattern += line + '\n';
     }
-    console.log(`Print Pattern 11 & rows : ${rows}`)
+    console.log(`Print Pattern 13 & rows : ${rows}`)
     console.log(pattern)
 }
 
+/* 
+14. Pattern
+A
+AB
+ABC
+ABCD
+ABCDE 
+*/
+function printPattern14(rows){
+    let pattern = '';
+    for(let row=1; row<=rows; row++){
+        let line = '';
+        for(let col=1; col<=row; col++){
+            line += String.fromCharCode(64+col);
+        }
+        pattern += line + '\n';
+    }
+    console.log(`Print Pattern 14 & rows : ${rows}`)
+    console.log(pattern)
+}
 
+/* 
+15. Pattern
+ABCDE
+ABCD
+ABC
+AB
+A
+*/
+function printPattern15(rows){
+    let pattern = '';
+    for(let row=1; row<=rows; row++){
+        let line = '';
+        for(let col=1; col<=rows-row+1; col++){
+            line += String.fromCharCode(64+col);
+        }
+        pattern += line + '\n';
+    }
+    console.log(`Print Pattern 15 & rows : ${rows}`)
+    console.log(pattern)
+}
 
+/* 
+16. Pattern
+A
+BB
+CCC
+DDDD
+EEEEE
+*/
+function printPattern16(rows){
+    let pattern = '';
+    for(let row=1; row<=rows; row++){
+        let line = '';
+        for(let col=1; col<=row; col++){
+            line += String.fromCharCode(64+row);
+        }
+        pattern += line + '\n';
+    }
+    console.log(`Print Pattern 16 & rows : ${rows}`)
+    console.log(pattern)
+}
+
+/* 
+16. Pattern
+A
+BB
+CCC
+DDDD
+EEEEE
+*/
+function printPattern16(rows){
+    let pattern = '';
+    for(let row=0; row<rows; row++){
+        let line = '';
+        for(let col=0; col<(rows-row-1); col++){
+            line = ' ' + line;
+        }
+        for(let col=0; col<(2*row+1); col++){
+            line += String.fromCharCode(65+row);
+            // line += '*'
+        }
+        for(let col=0; col<(rows-row-1); col++){
+            line = line + ' ';
+        }
+        pattern += line + '\n';
+    }
+    console.log(`Print Pattern 16 & rows : ${rows}`)
+    console.log(pattern)
+}
 
 function main(){
     for(let i=0; i<input.length; i++){
@@ -331,11 +503,18 @@ function main(){
         // printPattern4(input[i]);
         // printPattern5(input[i]);
         // printPattern6(input[i]);
-        // printPatter8(input[i]);
-        // printPatter9(input[i]);
-        // printPatter10(input[i]);
-        printPatter11(input[i]);
-        // printPatter13(input[i]);
+        // printPattern7(input[i]);
+        // printPattern8(input[i]);
+        // printPattern9(input[i]);
+        // printPattern10A(input[i]);
+        // printPattern10B(input[i]);
+        // printPattern11A(input[i]);
+        // printPattern11B(input[i]);
+        // printPattern12(input[i]);
+        // printPattern13(input[i]);
+        // printPattern14(input[i]);
+        // printPattern15(input[i]);
+        printPattern16(input[i]);
     }
 }
 
