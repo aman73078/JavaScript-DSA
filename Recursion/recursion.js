@@ -124,3 +124,60 @@ console.log('functionalFactorial: ',functionalFactorial(10))
 Reverse a given Array
 Problem Statement: You are given an array. The task is to reverse the array and print it.
 */
+
+function withoutRecursion(arr){
+    for(let i=0; i<=(arr.length/2); i++){
+        if(i != arr.length/2){
+            let a = arr[i];
+            arr[i] = arr[arr.length-i-1];
+            arr[arr.length-i-1] = a;
+        }
+    }
+    console.log('withoutRecursion: ',arr);
+}
+
+withoutRecursion([1,3,5,7,9,10])
+
+function reverseArrayByRecursion(arr,l,r){
+    if(l >= r) return;
+    let temp = arr[l];
+    arr[l] = arr[r];
+    arr[r] = temp;
+    console.log('reverseArrayByRecursion: ',arr)
+    reverseArrayByRecursion(arr,l+1,r-1);
+}
+reverseArrayByRecursion([1,3,5,7,9,10],0,[1,3,5,7,9,10].length-1)
+
+function reverseArrayByRecursionByUsingSingleVar(i,arr){
+    if(i >= arr.length/2) return;
+    let temp = arr[i];
+    arr[i] = arr[arr.length-i-1];
+    arr[arr.length-i-1] = temp;
+    console.log('reverseArrayByRecursionByUsingSingleVar: ',arr);
+    reverseArrayByRecursionByUsingSingleVar(i+1, arr);
+}
+reverseArrayByRecursionByUsingSingleVar(0,[1,3,5,7,9,10])
+
+
+/*
+Check if the given String is Palindrome or not
+
+Problem Statement: Given a string, check if the string is palindrome or not. A string is said to be palindrome if the reverse of the string is the same as the string.
+*/
+
+function withoutRecursionPailindrome(str){
+    for(let i=0; i<str.length/2; i++){
+        if(str[i] != str[str.length-i-1]) return false;
+    }
+    return true;
+}
+console.log('withoutRecursionPailindrome: ',withoutRecursionPailindrome('MADAM'))
+console.log('withoutRecursionPailindrome: ',withoutRecursionPailindrome('MADSM'))
+
+function recursionPalindrome(i,str){
+    if(i >= str.length/2) return true;
+    if(str[i] !== str[str.length-i-1]) return false;
+    return recursionPalindrome(i+1,str);
+}
+console.log('recursionPalindrome: ',withoutRecursionPailindrome('MADSM'))
+console.log('recursionPalindrome: ',withoutRecursionPailindrome('MADAM'))
