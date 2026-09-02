@@ -181,3 +181,28 @@ function recursionPalindrome(i,str){
 }
 console.log('recursionPalindrome: ',withoutRecursionPailindrome('MADSM'))
 console.log('recursionPalindrome: ',withoutRecursionPailindrome('MADAM'))
+
+
+/*
+Print Fibonacci Series up to Nth term
+Problem Statement: Given an integer N. Print the Fibonacci series up to the Nth term.
+*/
+function fibonacciWithoutRecursion(n){
+    let arr = [];
+    arr[0] = 0;
+    arr[1] = 1;
+    for(i=2; i<=n; i++){
+        arr[i] = arr[i-1] + arr[i-2];
+    }
+    console.log('fibonacciWithoutRecursion: ', arr,arr[n]);
+}
+
+fibonacciWithoutRecursion(5);
+fibonacciWithoutRecursion(6);
+
+function fibonacciRecursion(n){
+    if(n<=1) return n;
+    return fibonacciRecursion(n-1) + fibonacciRecursion(n-2);
+}
+console.log('fibonacciRecursion: ', fibonacciRecursion(5))
+console.log('fibonacciRecursion: ', fibonacciRecursion(6))
