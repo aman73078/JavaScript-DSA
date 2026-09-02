@@ -75,3 +75,29 @@ function factorialFunctional(n){
 }
 
 console.log('factorialFunctional: ',factorialFunctional(5));
+
+function pattern1(rows){
+    let pattern = '';
+    for(let row=1; row<=rows; row++){
+        for(let col=1; col<=rows; col++){
+            pattern += '*';
+        }
+        pattern += '\n';
+    }
+    console.log('pattern1');
+    console.log(pattern);
+}
+pattern1(5);
+
+function pattern2(rows){
+    let pattern = '';
+    for(let row=1; row<=rows; row++){
+        for(let col=1; col<=rows-row+1; col++){        
+            pattern += '*';
+        }
+        pattern += '\n';
+    }
+    console.log('pattern2');
+    console.log(pattern);
+}
+pattern2(5)
