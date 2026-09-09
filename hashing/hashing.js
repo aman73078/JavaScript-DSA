@@ -73,3 +73,65 @@ function feqElements(arr,eleArr){
 }
 feqElements([1,2,1,1,1,2,3,4,5,9,9,9],[1,2,3,4,5,9,12])
 
+/*
+Find the highest/lowest frequency element
+Problem Statement: Problem Statement: Given an array of size N. Find the highest and lowest frequency element.
+*/
+
+function findHighestLowestFeq(arr,searchEle){
+    const hashArray = new Array(10).fill(0);
+
+    for(let i =0; i<arr.length; i++){
+        hashArray[arr[i]]++;
+    }
+    let highestValue = hashArray[searchEle[0]];
+    let highestEle = searchEle[0];
+    let lowestValue = hashArray[searchEle[0]];
+    let lowestEle = searchEle[0];
+    for(let i=0; i<searchEle.length; i++){
+        if(hashArray[searchEle[i]] > highestValue){
+            highestValue = hashArray[searchEle[i]];
+            highestEle = searchEle[i];
+        }
+
+        if(hashArray[searchEle[i]] < lowestValue){
+            lowestValue = hashArray[searchEle[i]];
+            lowestEle = searchEle[i];
+        }
+    }
+    console.log(`findHighestLowestFeq: highest element:- ${highestEle}- times: ${highestValue} lowest element:- ${lowestEle}- times: ${lowestValue}`);
+
+}
+
+findHighestLowestFeq([1,2,2,3,3,3,4,4,1,5,7,7,9,9,9,9,9],[1,2,3,4,6,5,7,9])
+
+function findHighestLowestFeqMap(arr,searchEle){
+    const hashArray = new Map();
+
+    for(let i=0; i<arr.length; i++){
+        const pre = hashArray.get(arr[i]) ?? 0;
+        hashArray.set(arr[i], (pre+1));
+    }
+
+    let highestValue = hashArray.get(searchEle[0]);
+    let highestEle = searchEle[0];
+
+    let lowestValue = hashArray.get(searchEle[0]);
+    let lowestEle = searchEle[0];
+    for(let i=0; i<searchEle.length; i++){
+        const frequency = hashArray.get(searchEle[i]) ?? 0;
+        if(frequency > highestValue){
+            highestValue = frequency
+            highestEle = searchEle[i];
+        }
+
+        if(frequency < lowestValue){
+            lowestValue = frequency
+            lowestEle = searchEle[i];
+        }
+    }
+
+    console.log(`findHighestLowestFeq: highest element:- ${highestEle}- times: ${highestValue} lowest element:- ${lowestEle}- times: ${lowestValue}`);
+}
+
+findHighestLowestFeqMap([1,2,2,3,3,3,4,4,1,5,7,7,9,9,9,9,9],[1,2,3,4,6,5,7,9])
